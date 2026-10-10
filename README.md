@@ -8,10 +8,10 @@
 
 1. **青花瓷与水墨意境视觉**
    - **配色方案**：以浓艳青花蓝（`#1A365D`）、澄澈青花蓝（`#2B4C7E`）、山水晨雾蓝（`#EAF2F8`）与朱砂印章红（`#B83232`）为基调。
-   - **默认右侧山水画卷**：首页右侧采用喀斯特高山倒影高清壁纸（`images/bg-landscape.jpg`），辅以磨砂玻璃（`backdrop-blur`）悬浮卡片，确保高对比度与典雅排版。
+   - **默认右侧山水画卷**：首页右侧采用喀斯特高山倒影高清壁纸（`assets/images/bg-landscape.jpg`），辅以磨砂玻璃（`backdrop-blur`）悬浮卡片，确保高对比度与典雅排版。
 
 2. **模块化内容导航**
-   - **山水画卷 · 首页** (`#module-landscape`)：展示诗意主视觉与板块快速入口。
+   - **山水画卷 · 首页** (`#module-landscape`)：展示诗意主视觉与板块快速入口及最新更新推送。
    - **探源·研思** (`#module-research`)：深度思考、学术综述与读书反思。
    - **传灯·育新** (`#module-teaching`)：启发式提问与教学手记。
    - **知行·践真** (`#module-practice`)：个人开源项目、自动化脚本与前端实验。
@@ -19,7 +19,7 @@
    - **清欢·拾光** (`#module-life`)：日常随笔、茶边小记与生活记录。
 
 3. **交互式文章阅读弹窗 (Article Reader Modal)**
-   - 点击任意文章卡片可开启模态框阅读完整文章内容，支持键盘 `Esc` 快捷键关闭。
+   - 点击任意文章卡片可开启模态框阅读完整文章内容，支持文章标签（Tags）展示、附件文档（Markdown/PDF/Images）直接下载及键盘 `Esc` 快捷键关闭。
 
 4. **无依赖 Web Audio 禅意 BGM 音频系统**
    - 内置基于 HTML5 Web Audio API 的中国五声音阶（宫、商、角、徵、羽）随机组合音效，零依赖外部大音频文件，随开随听。
@@ -35,10 +35,24 @@
 ```text
 .
 ├── index.html              # 主页面 HTML / CSS / JS 全套代码
-├── images/
-│   └── bg-landscape.jpg    # 默认右侧背景壁纸（喀斯特山水倒影）
+├── AGENTS.md               # Jules AI Agent 内容自动化更新与维护指南
+├── assets/
+│   ├── images/
+│   │   └── bg-landscape.jpg # 默认右侧背景壁纸（喀斯特山水倒影）
+│   └── docs/
+│       └── sample-reading-notes.md # 示例附件文档
 └── README.md               # 项目说明与 GitHub Pages 部署指南
 ```
+
+---
+
+## 📝 内容维护与更新指南 (`AGENTS.md`)
+
+本项目支持直接通过编辑 `index.html` 中的 `articlesData` 数组扩充与管理内容：
+
+- **添加新文章**：在 `articlesData` 数组中增加文章对象，填入 `id`, `title`, `category`, `readTime`, `topic`, `tags`, `summary`, `content` 以及可选的 `attachmentName` 和 `attachmentUrl`。
+- **附件托管**：所有文档、PDF 或 Markdown 笔记可存放于 `assets/docs/` 目录下，并在文章对象的 `attachmentUrl` 中引用。
+- **AI 自动化协作**：项目包含 `AGENTS.md`，可指导 AI 代理（如 Jules）按统一规范进行知识扩充与内容发布。
 
 ---
 
@@ -52,7 +66,7 @@
 3. 权限选择 **Public**，点击 **Create repository**。
 
 ### 第二步：推送项目代码
-将本仓库的文件（包含 `index.html`、`images/` 目录以及 `README.md`）推送至 GitHub 仓库的 `main` 分支：
+将本仓库的文件（包含 `index.html`、`assets/` 目录、`AGENTS.md` 以及 `README.md`）推送至 GitHub 仓库的 `main` 分支：
 
 ```bash
 git init

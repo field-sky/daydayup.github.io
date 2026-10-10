@@ -77,7 +77,7 @@
 
         /* Default Right Side Landscape View with Karst Mountain Background */
         .mountain-hero-bg {
-            background-image: linear-gradient(180deg, rgba(15, 28, 48, 0.45) 0%, rgba(26, 54, 93, 0.75) 100%), url('images/bg-landscape.jpg');
+            background-image: linear-gradient(180deg, rgba(15, 28, 48, 0.45) 0%, rgba(26, 54, 93, 0.75) 100%), url('assets/images/bg-landscape.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -265,10 +265,10 @@
     <main class="flex-1 h-full overflow-y-auto relative bg-porcelain-base p-4 md:p-8 lg:p-10">
 
         <!-- MODULE 0: DEFAULT LANDSCAPE VIEW (山水画卷 - Feature Karst Mountain Reflection Background) -->
-        <section id="module-landscape" class="content-module min-h-full flex flex-col justify-between mountain-hero-bg rounded-3xl border border-white/20 p-6 md:p-10 lg:p-12 relative overflow-hidden shadow-lg">
+        <section id="module-landscape" class="content-module min-h-full flex flex-col justify-between mountain-hero-bg rounded-3xl border border-white/20 p-6 md:p-10 lg:p-12 relative overflow-hidden shadow-lg space-y-8">
             <!-- Decorative Chinese Seal & Floating Verse Container -->
             <div class="flex justify-between items-start z-10">
-                <div class="space-y-2 bg-slate-900/40 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-white/10 max-w-xl">
+                <div class="space-y-2 bg-slate-900/45 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-white/10 max-w-xl">
                     <div class="flex items-center gap-2 text-xs font-serif text-amber-300 tracking-widest uppercase">
                         <i class="fa-solid fa-mountain-sun"></i>
                         <span>青花意境 · 喀斯特水墨倒影</span>
@@ -284,8 +284,8 @@
             </div>
 
             <!-- Central Glass Card Artwork Accent -->
-            <div class="my-auto py-8 flex flex-col items-center justify-center text-center z-10">
-                <div class="max-w-2xl bg-white/80 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/40 shadow-xl text-center space-y-4">
+            <div class="my-auto py-4 flex flex-col items-center justify-center text-center z-10 space-y-6">
+                <div class="max-w-2xl bg-white/85 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/40 shadow-xl text-center space-y-4">
                     <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-porcelain-cobalt/10 text-porcelain-cobalt mb-1">
                         <i class="fa-solid fa-book-bookmark text-2xl"></i>
                     </div>
@@ -295,10 +295,44 @@
                     <p class="font-serif text-sm text-porcelain-ink/90 leading-relaxed max-w-lg mx-auto">
                         这里是个人日常知识积累、哲学思考与灵感碎片的沉淀空间。点击左侧栏目探索各个主题分类，或开启背景音效共享静谧时光。
                     </p>
-                    <div class="pt-2 flex flex-wrap justify-center gap-3 text-xs font-serif text-porcelain-cerulean">
+                    <div class="pt-2 flex flex-wrap justify-center gap-2 text-xs font-serif text-porcelain-cerulean">
                         <span class="px-3 py-1 rounded-full bg-porcelain-mist/80 border border-porcelain-cobalt/10"><i class="fa-solid fa-feather-pointed mr-1 text-porcelain-accent"></i> 读书思考</span>
                         <span class="px-3 py-1 rounded-full bg-porcelain-mist/80 border border-porcelain-cobalt/10"><i class="fa-solid fa-code mr-1 text-porcelain-cerulean"></i> 数字利器</span>
                         <span class="px-3 py-1 rounded-full bg-porcelain-mist/80 border border-porcelain-cobalt/10"><i class="fa-solid fa-sparkles mr-1 text-amber-600"></i> AI 探索</span>
+                    </div>
+                </div>
+
+                <!-- Latest Featured Posts Section -->
+                <div class="w-full max-w-2xl bg-white/80 backdrop-blur-md rounded-2xl p-5 border border-white/40 shadow-md text-left space-y-3">
+                    <div class="flex items-center justify-between border-b border-porcelain-cobalt/10 pb-2">
+                        <div class="flex items-center gap-2 font-serif text-xs font-bold text-porcelain-cobalt tracking-wider">
+                            <i class="fa-solid fa-clock-rotate-left text-porcelain-cerulean"></i>
+                            <span>近水楼台 · 最新更新</span>
+                        </div>
+                        <span class="text-[10px] text-porcelain-muted font-sans">点击可直接阅读</span>
+                    </div>
+                    <div class="space-y-2 font-serif text-xs">
+                        <div onclick="openArticle('research-1')" class="p-2.5 rounded-lg hover:bg-porcelain-mist/80 transition-colors cursor-pointer flex items-center justify-between group">
+                            <div class="flex items-center gap-2 truncate">
+                                <span class="px-2 py-0.5 rounded bg-porcelain-cobalt text-white text-[10px] font-sans">探源</span>
+                                <span class="font-bold text-porcelain-cobalt group-hover:text-porcelain-cerulean truncate">魏晋时期玄学与书法关系研究综述</span>
+                            </div>
+                            <span class="text-[10px] text-porcelain-muted shrink-0 font-sans ml-2">2025-02</span>
+                        </div>
+                        <div onclick="openArticle('practice-1')" class="p-2.5 rounded-lg hover:bg-porcelain-mist/80 transition-colors cursor-pointer flex items-center justify-between group">
+                            <div class="flex items-center gap-2 truncate">
+                                <span class="px-2 py-0.5 rounded bg-porcelain-cerulean text-white text-[10px] font-sans">知行</span>
+                                <span class="font-bold text-porcelain-cobalt group-hover:text-porcelain-cerulean truncate">Markdown 笔记自动化整理工具</span>
+                            </div>
+                            <span class="text-[10px] text-porcelain-muted shrink-0 font-sans ml-2">2025-02</span>
+                        </div>
+                        <div onclick="openArticle('ai-1')" class="p-2.5 rounded-lg hover:bg-porcelain-mist/80 transition-colors cursor-pointer flex items-center justify-between group">
+                            <div class="flex items-center gap-2 truncate">
+                                <span class="px-2 py-0.5 rounded bg-amber-700 text-white text-[10px] font-sans">远瞻</span>
+                                <span class="font-bold text-porcelain-cobalt group-hover:text-porcelain-cerulean truncate">“如水随形”的智能体外壳与人机交互形态演变</span>
+                            </div>
+                            <span class="text-[10px] text-porcelain-muted shrink-0 font-sans ml-2">2025-01</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -364,10 +398,12 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         魏晋时期玄学与书法关系研究综述
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>3 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>艺术史与哲学</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#玄学</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#魏晋书法</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         一、魏晋时期社会文化背景及魏晋玄学的兴起。魏晋时期政治局势动荡，汉代恪守的儒家经典权威面临解构，士大夫阶层转而投身于对《老子》、《庄子》、《周易》“三玄”的思辨...
@@ -380,10 +416,12 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         马尔库塞对弗洛伊德“升华”概念的重塑
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>4 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>批判理论</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#批判理论</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#精神分析</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         引言：在《爱欲与文明》中，马尔库塞重新审视了弗洛伊德的精神分析理论，试图探讨“非压抑性文明”的可能性。他将本能压抑区分为“基本压抑”与“额外压抑”...
@@ -396,13 +434,15 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         读《黄泉下的美术——宏观中国古代墓葬》引发的几点思考
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>5 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>美术史研究</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#巫鸿</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#墓葬美术</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
-                        《黄泉下的美术——宏观中国古代墓葬》是巫鸿先生的重要著作之一，它开辟了中国美术史上的一个新领域，即对墓葬艺术的空间与礼仪功能研究。巫鸿先生将西方的艺术史研究方法应用到中国古代空间表现...
+                        《黄泉下的美术——宏观中国古代墓葬》是巫鸿先生的重要著作之一，它开辟了中国美术史上的一个新领域，即对墓葬艺术的空间与礼仪功能研究...
                     </p>
                 </article>
             </div>
@@ -425,10 +465,12 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         如何提出一个“好问题”？——探究式讨论课堂的启示
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>教学手记</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#提问方法</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#探究课堂</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         在信息唾手可得的时代，精准提问的价值远高于记忆答案。整理了适合启发思维的提问清单，帮助建立自我质疑与深挖的习惯，引导学生打破框架...
@@ -441,10 +483,11 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         开放式研讨课的实验手记与互动反思
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>3 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>教育实践</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#研讨式教学</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         尝试用“课题辩论+协同工作坊”取代单向灌输。记录了几次讨论中令人眼前一亮的小火花与反思改进点，探讨如何建立更平等的对话空间...
@@ -470,10 +513,12 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         Personal Reading Workflow: 基于 Python 的 Markdown 笔记自动化整理工具
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>开源工具</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#Python</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#Markdown</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         一套个人自用的 Markdown 笔记自动化处理脚本，可将阅读摘录自动按主题分类并打上标签，保持数字书房的整洁...
@@ -486,10 +531,12 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         数字古风卡片生成器：基于 Canvas 的排版实验
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>前端实验</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#Canvas</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#排版</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         基于 HTML Canvas 的前端小实验，可将一段文字实时渲染为青花瓷配色或水墨山水风格的排版卡片，便于日常分享与记录...
@@ -515,10 +562,12 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         “如水随形”的智能体外壳与人机交互形态的演变
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>3 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>AI 交互</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#AgentUI</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#人机交互</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         未来的软件界面也许不再有固定的按钮与菜单，而是像水流一样，根据用户的即时意图动态生成最契合的交互媒介...
@@ -531,10 +580,12 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         机器审美与人文留白：生成式算法年代的审视
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>3 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>美学思考</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#生成式AI</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#留白美学</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         AI 可以瞬间生成繁复精致的图案，但“留白”的意境依然需要人类的审美裁判力。算法越充沛，留白越显珍贵...
@@ -547,10 +598,11 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         长效学习与认知沉淀：深度阅读在智能时代的反思
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>认知习惯</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#深度阅读</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         在追求即时回答的时代，如何保持深度阅读与慢速思考的能力？AI 应当成为思考的助推器，而非大脑的替代品...
@@ -576,10 +628,12 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         重读《庄子·齐物论》随想与茶边小记
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>随笔札记</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#庄子</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#茶边小记</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         “天地与我并生，而万物与我为一。”在纷繁的信息洪流中，偶尔关掉屏幕静坐片刻，方觉内心澄澈...
@@ -592,10 +646,11 @@
                     <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
                         秋分日：窗前听雨与整理书案
                     </h3>
-                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans flex-wrap">
                         <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
                         <span>•</span>
                         <span><i class="fa-regular fa-folder mr-1"></i>日常记录</span>
+                        <span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-[10px]">#节气</span>
                     </div>
                     <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
                         趁着雨天将积攒了一季度的纸质笔记扫描入库。看着旧纸张上的字迹与新打上的电子标签，颇有种时光重叠的趣味...
@@ -642,6 +697,8 @@
                 category: '探源·研思',
                 title: '魏晋时期玄学与书法关系研究综述',
                 meta: '3 分钟阅读 • 艺术史与哲学',
+                tags: ['玄学', '魏晋书法', '王羲之', '美学'],
+                attachment: { name: '观复斋示例笔记 (sample-reading-notes.md)', url: 'assets/docs/sample-reading-notes.md' },
                 content: `
                     <h4 class="text-lg font-bold text-porcelain-cobalt mb-3">一、魏晋时期社会文化背景及魏晋玄学的兴起</h4>
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
@@ -660,6 +717,7 @@
                 category: '探源·研思',
                 title: '马尔库塞对弗洛伊德“升华”概念的重塑',
                 meta: '4 分钟阅读 • 批判理论',
+                tags: ['批判理论', '精神分析', '马尔库塞'],
                 content: `
                     <h4 class="text-lg font-bold text-porcelain-cobalt mb-3">引言：非压抑性文明的构想</h4>
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
@@ -675,6 +733,7 @@
                 category: '探源·研思',
                 title: '读《黄泉下的美术——宏观中国古代墓葬》引发的几点思考',
                 meta: '5 分钟阅读 • 美术史研究',
+                tags: ['巫鸿', '墓葬美术', '礼仪空间'],
                 content: `
                     <h4 class="text-lg font-bold text-porcelain-cobalt mb-3">空间与礼仪的微观与宏观视野</h4>
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
@@ -689,6 +748,7 @@
                 category: '传灯·育新',
                 title: '如何提出一个“好问题”？——探究式讨论课堂的启示',
                 meta: '2 分钟阅读 • 教学手记',
+                tags: ['提问方法', '探究课堂', '启发教学'],
                 content: `
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
                         在信息爆炸与人工智能工具普及的时代，精准提问的价值远高于记忆现成答案。好的问题往往具有开放性、启发性与反思性。
@@ -705,6 +765,7 @@
                 category: '传灯·育新',
                 title: '开放式研讨课的实验手记与互动反思',
                 meta: '3 分钟阅读 • 教育实践',
+                tags: ['研讨式教学', '工作坊', '教育反思'],
                 content: `
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
                         尝试用“课题辩论+协同工作坊”取代传统的单向灌输式教学。在最近的课程实践中，学生围绕前沿议题展开小组研讨与观点碰撞。
@@ -718,6 +779,8 @@
                 category: '知行·践真',
                 title: 'Personal Reading Workflow: 基于 Python 的 Markdown 笔记自动化整理工具',
                 meta: '2 分钟阅读 • 开源工具',
+                tags: ['Python', 'Markdown', '自动化', 'Obsidian'],
+                attachment: { name: '观复斋示例笔记 (sample-reading-notes.md)', url: 'assets/docs/sample-reading-notes.md' },
                 content: `
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
                         一套个人自用的 Python 自动化脚本，用于解析 Obsidian 与 RSS 读书摘录。通过正则抽取高亮段落与标签，并按主题自动分类归档至对应数字书房目录下。
@@ -735,6 +798,7 @@ def process_notes(content):
                 category: '知行·践真',
                 title: '数字古风卡片生成器：基于 Canvas 的排版实验',
                 meta: '2 分钟阅读 • 前端实验',
+                tags: ['Canvas', '排版', '前端工具', '青花瓷'],
                 content: `
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
                         基于 HTML Canvas 的前端小工具，能将一段文字实时绘制为具有青花瓷色彩或水墨质感的分享卡片。支持自定义印章文本、宣纸纹理底色与古典排版样式。
@@ -745,6 +809,7 @@ def process_notes(content):
                 category: '远瞻·智境',
                 title: '“如水随形”的智能体外壳与人机交互形态的演变',
                 meta: '3 分钟阅读 • AI 交互',
+                tags: ['AgentUI', '人机交互', '智能体'],
                 content: `
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
                         未来的软件界面也许不再依赖固定的菜单与层级按钮，而是像水流一样，根据用户的即时意图与上下文，动态生成最契合的交互媒介与信息展示形态。
@@ -757,7 +822,8 @@ def process_notes(content):
             'ai-2': {
                 category: '远瞻·智境',
                 title: '机器审美与人文留白：生成式算法年代的审视',
-                meta: '3 分钟阅读 • 美学思考',
+                meta: '3 分钟阅读 • 美术思考',
+                tags: ['生成式AI', '留白美学', '算法艺术'],
                 content: `
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
                         AI 生成图像可以瞬间填满极尽繁复的细节，但在中国古典美学中，“留白”方是气韵生动的关键所在。算法越是充沛富足，人类对“留白”与“意到笔不到”的审美裁量权就越显珍贵。
@@ -768,6 +834,7 @@ def process_notes(content):
                 category: '远瞻·智境',
                 title: '长效学习与认知沉淀：深度阅读在智能时代的反思',
                 meta: '2 分钟阅读 • 认知习惯',
+                tags: ['深度阅读', '长效学习', '思考法'],
                 content: `
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
                         在生成式 AI 能够秒级总结数万字长文的时代，人类为何还需要亲自进行深度慢速阅读？因为真正的认知消化与灵感火花，往往诞生于啃读长文过程中的停顿与联想，而非直接获得摘要结论。
@@ -778,6 +845,7 @@ def process_notes(content):
                 category: '清欢·拾光',
                 title: '重读《庄子·齐物论》随想与茶边小记',
                 meta: '2 分钟阅读 • 随笔札记',
+                tags: ['庄子', '茶边小记', '虚室生白'],
                 content: `
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
                         “天地与我并生，而万物与我为一。”雨后清晨，泡上一壶清茶，重读《齐物论》。在纷繁嘈杂的信息流中，关掉屏幕静坐片刻，体会万物同达的澄澈，内心的焦虑豁然开朗。
@@ -788,6 +856,7 @@ def process_notes(content):
                 category: '清欢·拾光',
                 title: '秋分日：窗前听雨与整理书案',
                 meta: '2 分钟阅读 • 日常记录',
+                tags: ['节气', '听雨', '书案整理'],
                 content: `
                     <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
                         秋分日，凉风渐起。把积攒了一季度的纸质笔记与散落书签归类整理。看着旧纸张上的字迹与新打上的数字标签，颇有种时光重叠与思绪交融的趣味。
@@ -834,6 +903,33 @@ def process_notes(content):
             const data = articlesData[articleId];
             if (!data) return;
 
+            // Generate tags HTML
+            let tagsHTML = '';
+            if (data.tags && data.tags.length > 0) {
+                tagsHTML = `
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                        ${data.tags.map(t => `<span class="px-2 py-0.5 rounded-full bg-porcelain-mist text-porcelain-cerulean text-xs">#${t}</span>`).join('')}
+                    </div>
+                `;
+            }
+
+            // Generate attachment HTML
+            let attachmentHTML = '';
+            if (data.attachment) {
+                attachmentHTML = `
+                    <div class="mt-6 p-4 rounded-xl bg-porcelain-mist/80 border border-porcelain-cobalt/20 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-xs font-sans text-porcelain-cobalt font-medium">
+                            <i class="fa-solid fa-paperclip text-porcelain-cerulean"></i>
+                            <span>附件：${data.attachment.name}</span>
+                        </div>
+                        <a href="${data.attachment.url}" download target="_blank" class="px-3 py-1.5 bg-porcelain-cobalt text-white rounded-lg text-xs font-sans hover:bg-porcelain-cerulean transition-colors flex items-center gap-1.5">
+                            <i class="fa-solid fa-download"></i>
+                            <span>下载附件</span>
+                        </a>
+                    </div>
+                `;
+            }
+
             document.getElementById('modal-category').innerText = data.category;
             document.getElementById('modal-body').innerHTML = `
                 <div class="border-b border-porcelain-cobalt/10 pb-4 mb-4">
@@ -842,8 +938,10 @@ def process_notes(content):
                         <i class="fa-regular fa-clock"></i>
                         <span>${data.meta}</span>
                     </div>
+                    ${tagsHTML}
                 </div>
                 <div>${data.content}</div>
+                ${attachmentHTML}
             `;
 
             document.getElementById('article-modal').classList.remove('hidden');
