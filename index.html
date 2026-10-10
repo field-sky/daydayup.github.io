@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>观复斋 | 个人灵感与日常积累</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Serif SC & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        porcelain: {
+                            base: '#F2F5F7',
+                            white: '#FFFFFF',
+                            cobalt: '#1A365D',      /* 浓艳青花蓝 */
+                            cerulean: '#2B4C7E',    /* 澄澈青花蓝 */
+                            mist: '#EAF2F8',        /* 山水晨雾蓝 */
+                            accent: '#B83232',      /* 朱砂印章红 */
+                            ink: '#2C3539',         /* 墨色 */
+                            muted: '#64748B'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F2F5F7;
+            color: #2C3539;
+            font-family: 'Plus Jakarta Sans', 'Noto Serif SC', serif;
+            background-image: radial-gradient(rgba(27, 54, 93, 0.03) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        .porcelain-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(43, 76, 126, 0.12);
+            box-shadow: 0 8px 24px -4px rgba(26, 54, 93, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .porcelain-card:hover {
+            border-color: rgba(43, 76, 126, 0.3);
+            box-shadow: 0 12px 30px -4px rgba(26, 54, 93, 0.08);
+        }
+
+        .seal-stamp {
+            border: 1.5px solid #B83232;
+            color: #B83232;
+            font-family: 'Noto Serif SC', serif;
+            letter-spacing: 2px;
+            background-color: rgba(184, 50, 50, 0.03);
+        }
+
+        .nav-item-active {
+            background-color: #1A365D;
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.2);
+        }
+
+        .nav-item-active i {
+            color: #FFFFFF !important;
+        }
+
+        /* Default Right Side Landscape View with Karst Mountain Background */
+        .mountain-hero-bg {
+            background-image: linear-gradient(180deg, rgba(15, 28, 48, 0.45) 0%, rgba(26, 54, 93, 0.75) 100%), url('images/bg-landscape.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Smooth fade-in animation for active modules */
+        .fade-in-content {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #EAF2F8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2B4C7E;
+            border-radius: 4px;
+        }
+
+        /* Pulse animation for playing audio badge */
+        .music-pulse {
+            animation: musicPulse 1.8s infinite ease-in-out;
+        }
+        @keyframes musicPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col md:flex-row overflow-hidden select-none">
+
+    <!-- Mobile Navigation Top Bar -->
+    <header class="md:hidden bg-white/95 backdrop-blur-md border-b border-porcelain-cobalt/10 px-4 py-3 flex items-center justify-between z-40 shrink-0 shadow-sm">
+        <button onclick="switchTab('landscape')" class="flex items-center space-x-2.5 text-left focus:outline-none">
+            <div class="w-8 h-8 rounded-full bg-porcelain-cobalt flex items-center justify-center text-white font-serif text-sm font-bold shadow-sm">
+                观
+            </div>
+            <div>
+                <span class="font-serif font-bold text-base text-porcelain-cobalt leading-none block">观复斋</span>
+                <span class="text-[9px] text-porcelain-muted tracking-widest uppercase block mt-0.5">Personal Notes</span>
+            </div>
+        </button>
+        <div class="flex items-center gap-2">
+            <button onclick="toggleBGM()" class="w-8 h-8 rounded-full bg-porcelain-mist flex items-center justify-center text-porcelain-cobalt hover:bg-porcelain-cobalt hover:text-white transition-colors">
+                <i id="bgm-icon-mobile" class="fa-solid fa-play text-xs"></i>
+            </button>
+            <button id="mobile-menu-toggle" onclick="toggleMobileSidebar()" class="w-9 h-9 rounded-lg bg-porcelain-mist text-porcelain-cobalt flex items-center justify-center hover:bg-porcelain-cobalt hover:text-white transition-colors">
+                <i class="fa-solid fa-bars text-sm"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Overlay backdrop for mobile menu -->
+    <div id="mobile-backdrop" onclick="toggleMobileSidebar()" class="hidden fixed inset-0 bg-slate-900/50 z-40 md:hidden backdrop-blur-xs transition-opacity"></div>
+
+    <!-- Left Navigation Panel (Sidebar) -->
+    <aside id="sidebar" class="fixed md:relative inset-y-0 left-0 w-72 lg:w-80 bg-white/95 backdrop-blur-md border-r border-porcelain-cobalt/10 flex flex-col justify-between shrink-0 z-50 md:z-30 shadow-lg md:shadow-none -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div>
+            <!-- Branding & Header -->
+            <div class="p-6 border-b border-porcelain-cobalt/10 flex items-center justify-between">
+                <button onclick="switchTab('landscape')" class="flex items-center space-x-3 text-left group cursor-pointer focus:outline-none">
+                    <div class="w-11 h-11 rounded-full bg-porcelain-cobalt flex items-center justify-center text-white font-serif text-xl font-bold shadow-md group-hover:rotate-12 transition-transform duration-300">
+                        观
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-xl text-porcelain-cobalt tracking-wide block">观复斋</span>
+                        <span class="text-[10px] text-porcelain-muted tracking-widest uppercase block">Personal Notes & Inspirations</span>
+                    </div>
+                </button>
+                <span class="seal-stamp text-[10px] px-2 py-0.5 rounded font-serif font-bold hidden lg:inline-block">静观复始</span>
+            </div>
+
+            <!-- BGM Audio Player Widget Section (Top Left) -->
+            <div class="p-4 mx-4 my-3 rounded-xl bg-porcelain-mist/60 border border-porcelain-cobalt/10 text-xs font-serif">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2 text-porcelain-cobalt font-bold">
+                        <i class="fa-solid fa-music text-porcelain-cerulean"></i>
+                        <span>背景音乐 (BGM)</span>
+                    </div>
+                    <span id="bgm-status-badge" class="hidden flex items-center gap-1 text-[10px] text-emerald-600 font-sans">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 music-pulse inline-block"></span>
+                        播放中
+                    </span>
+                </div>
+
+                <!-- BGM Controls -->
+                <div class="flex items-center gap-2">
+                    <button id="bgm-play-btn" onclick="toggleBGM()" class="w-8 h-8 rounded-lg bg-porcelain-cobalt text-white flex items-center justify-center hover:bg-porcelain-cerulean transition-colors shrink-0 shadow-sm">
+                        <i id="bgm-icon" class="fa-solid fa-play text-xs"></i>
+                    </button>
+
+                    <select id="bgm-select" onchange="changeBGMTrack(this.value)" class="w-full bg-white text-porcelain-ink text-xs px-2 py-1.5 rounded-lg border border-porcelain-cobalt/20 focus:outline-none focus:border-porcelain-cobalt">
+                        <option value="zen-chime">古韵平湖 (禅意磬音)</option>
+                        <option value="mountain-stream">空山新雨 (高山流水)</option>
+                        <option value="bamboo-wind">竹林听风 (五音雅韵)</option>
+                        <option value="custom">某种自定义音频/本地文件...</option>
+                    </select>
+                </div>
+
+                <!-- Custom Local File Input (Hidden by default) -->
+                <div id="custom-file-container" class="mt-2 hidden">
+                    <input type="file" id="bgm-file-input" accept="audio/*" onchange="handleCustomAudio(event)" class="text-[10px] text-porcelain-muted w-full file:mr-2 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-[10px] file:bg-porcelain-cobalt file:text-white cursor-pointer"/>
+                </div>
+
+                <!-- Hidden Native Audio Player for Custom Files -->
+                <audio id="audio-player" class="hidden" loop></audio>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="p-4 pt-1 space-y-1.5 text-sm font-serif">
+                <button onclick="switchTab('landscape')" id="nav-landscape" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-porcelain-ink hover:bg-porcelain-mist transition-all text-left">
+                    <i class="fa-solid fa-mountain-sun text-porcelain-cerulean w-5 text-center"></i>
+                    <span class="font-bold">山水画卷 · 首页</span>
+                </button>
+
+                <div class="pt-3 pb-1 px-4 text-[11px] text-porcelain-muted tracking-widest font-sans uppercase font-medium">内容分类</div>
+
+                <button onclick="switchTab('research')" id="nav-research" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl text-porcelain-ink hover:bg-porcelain-mist transition-all text-left">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-compass text-porcelain-cerulean w-5 text-center"></i>
+                        <span>探源·研思</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
+                </button>
+
+                <button onclick="switchTab('teaching')" id="nav-teaching" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl text-porcelain-ink hover:bg-porcelain-mist transition-all text-left">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-book-open text-porcelain-cerulean w-5 text-center"></i>
+                        <span>传灯·育新</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
+                </button>
+
+                <button onclick="switchTab('practice')" id="nav-practice" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl text-porcelain-ink hover:bg-porcelain-mist transition-all text-left">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-hammer text-porcelain-cerulean w-5 text-center"></i>
+                        <span>知行·践真</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
+                </button>
+
+                <button onclick="switchTab('ai-vision')" id="nav-ai-vision" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl text-porcelain-ink hover:bg-porcelain-mist transition-all text-left">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-wand-magic-sparkles text-porcelain-cerulean w-5 text-center"></i>
+                        <span>远瞻·智境</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
+                </button>
+
+                <button onclick="switchTab('life')" id="nav-life" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl text-porcelain-ink hover:bg-porcelain-mist transition-all text-left">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-leaf text-porcelain-cerulean w-5 text-center"></i>
+                        <span>清欢·拾光</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="p-4 border-t border-porcelain-cobalt/10 text-xs font-serif text-porcelain-muted space-y-2">
+            <div class="flex items-center justify-between">
+                <span>万物并作 吾以观复</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+            </div>
+            <div class="text-[11px] opacity-75">基于 GitHub Pages 托管</div>
+        </div>
+    </aside>
+
+    <!-- Right Main Content Canvas -->
+    <main class="flex-1 h-full overflow-y-auto relative bg-porcelain-base p-4 md:p-8 lg:p-10">
+
+        <!-- MODULE 0: DEFAULT LANDSCAPE VIEW (山水画卷 - Feature Karst Mountain Reflection Background) -->
+        <section id="module-landscape" class="content-module min-h-full flex flex-col justify-between mountain-hero-bg rounded-3xl border border-white/20 p-6 md:p-10 lg:p-12 relative overflow-hidden shadow-lg">
+            <!-- Decorative Chinese Seal & Floating Verse Container -->
+            <div class="flex justify-between items-start z-10">
+                <div class="space-y-2 bg-slate-900/40 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-white/10 max-w-xl">
+                    <div class="flex items-center gap-2 text-xs font-serif text-amber-300 tracking-widest uppercase">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                        <span>青花意境 · 喀斯特水墨倒影</span>
+                    </div>
+                    <h1 class="font-serif text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-snug tracking-wide">
+                        致虚极，守静笃。<br>
+                        <span class="text-lg md:text-2xl font-normal opacity-90 text-slate-100">万物并作，吾以观复。</span>
+                    </h1>
+                </div>
+                <div class="seal-stamp text-xs px-3.5 py-2.5 rounded-lg font-serif text-center leading-relaxed hidden sm:block bg-white/90 backdrop-blur-md border-porcelain-accent text-porcelain-accent shadow-md">
+                    观复<br>淡彩
+                </div>
+            </div>
+
+            <!-- Central Glass Card Artwork Accent -->
+            <div class="my-auto py-8 flex flex-col items-center justify-center text-center z-10">
+                <div class="max-w-2xl bg-white/80 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/40 shadow-xl text-center space-y-4">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-porcelain-cobalt/10 text-porcelain-cobalt mb-1">
+                        <i class="fa-solid fa-book-bookmark text-2xl"></i>
+                    </div>
+                    <h2 class="font-serif text-xl md:text-2xl font-bold text-porcelain-cobalt">
+                        欢迎来到观复斋
+                    </h2>
+                    <p class="font-serif text-sm text-porcelain-ink/90 leading-relaxed max-w-lg mx-auto">
+                        这里是个人日常知识积累、哲学思考与灵感碎片的沉淀空间。点击左侧栏目探索各个主题分类，或开启背景音效共享静谧时光。
+                    </p>
+                    <div class="pt-2 flex flex-wrap justify-center gap-3 text-xs font-serif text-porcelain-cerulean">
+                        <span class="px-3 py-1 rounded-full bg-porcelain-mist/80 border border-porcelain-cobalt/10"><i class="fa-solid fa-feather-pointed mr-1 text-porcelain-accent"></i> 读书思考</span>
+                        <span class="px-3 py-1 rounded-full bg-porcelain-mist/80 border border-porcelain-cobalt/10"><i class="fa-solid fa-code mr-1 text-porcelain-cerulean"></i> 数字利器</span>
+                        <span class="px-3 py-1 rounded-full bg-porcelain-mist/80 border border-porcelain-cobalt/10"><i class="fa-solid fa-sparkles mr-1 text-amber-600"></i> AI 探索</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Access Navigation Chips -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-4 z-10">
+                <button onclick="switchTab('research')" class="p-3.5 bg-white/85 hover:bg-white rounded-xl border border-white/40 backdrop-blur-md text-left transition-all hover:-translate-y-0.5 shadow-sm group">
+                    <div class="text-xs text-porcelain-cerulean font-serif font-bold group-hover:text-porcelain-cobalt flex items-center justify-between">
+                        <span>探源·研思</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </div>
+                    <div class="text-[11px] text-porcelain-muted truncate mt-1">知识拓扑与深度思考</div>
+                </button>
+
+                <button onclick="switchTab('teaching')" class="p-3.5 bg-white/85 hover:bg-white rounded-xl border border-white/40 backdrop-blur-md text-left transition-all hover:-translate-y-0.5 shadow-sm group">
+                    <div class="text-xs text-porcelain-cerulean font-serif font-bold group-hover:text-porcelain-cobalt flex items-center justify-between">
+                        <span>传灯·育新</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </div>
+                    <div class="text-[11px] text-porcelain-muted truncate mt-1">启发提问与授业手记</div>
+                </button>
+
+                <button onclick="switchTab('practice')" class="p-3.5 bg-white/85 hover:bg-white rounded-xl border border-white/40 backdrop-blur-md text-left transition-all hover:-translate-y-0.5 shadow-sm group">
+                    <div class="text-xs text-porcelain-cerulean font-serif font-bold group-hover:text-porcelain-cobalt flex items-center justify-between">
+                        <span>知行·践真</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </div>
+                    <div class="text-[11px] text-porcelain-muted truncate mt-1">动手开源与项目试验</div>
+                </button>
+
+                <button onclick="switchTab('ai-vision')" class="p-3.5 bg-white/85 hover:bg-white rounded-xl border border-white/40 backdrop-blur-md text-left transition-all hover:-translate-y-0.5 shadow-sm group">
+                    <div class="text-xs text-porcelain-cobalt font-serif font-bold group-hover:text-porcelain-cobalt flex items-center justify-between">
+                        <span>远瞻·智境</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </div>
+                    <div class="text-[11px] text-porcelain-muted truncate mt-1">未来AI与智能体遐想</div>
+                </button>
+
+                <button onclick="switchTab('life')" class="p-3.5 bg-white/85 hover:bg-white rounded-xl border border-white/40 backdrop-blur-md text-left transition-all hover:-translate-y-0.5 shadow-sm group col-span-2 sm:col-span-1">
+                    <div class="text-xs text-porcelain-cerulean font-serif font-bold group-hover:text-porcelain-cobalt flex items-center justify-between">
+                        <span>清欢·拾光</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </div>
+                    <div class="text-[11px] text-porcelain-muted truncate mt-1">茶边小记与读书散记</div>
+                </button>
+            </div>
+        </section>
+
+        <!-- MODULE 1: 探源·研思 -->
+        <section id="module-research" class="content-module hidden space-y-6 max-w-4xl mx-auto bg-white/90 p-6 md:p-10 rounded-2xl border border-porcelain-cobalt/10 shadow-sm">
+            <div class="flex items-center justify-between border-b border-porcelain-cobalt/10 pb-4 mb-6">
+                <div>
+                    <span class="text-porcelain-cerulean font-serif font-semibold text-xs tracking-widest uppercase">Intellectual Curiosity</span>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-porcelain-cobalt mt-1">探源·研思</h2>
+                </div>
+                <button onclick="switchTab('landscape')" class="text-xs font-serif text-porcelain-muted hover:text-porcelain-cobalt flex items-center gap-1.5 bg-porcelain-base px-3 py-1.5 rounded-lg border border-porcelain-cobalt/10 transition-colors">
+                    <i class="fa-solid fa-mountain"></i> 返回画卷
+                </button>
+            </div>
+
+            <div class="space-y-8">
+                <article onclick="openArticle('research-1')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        魏晋时期玄学与书法关系研究综述
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>3 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>艺术史与哲学</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        一、魏晋时期社会文化背景及魏晋玄学的兴起。魏晋时期政治局势动荡，汉代恪守的儒家经典权威面临解构，士大夫阶层转而投身于对《老子》、《庄子》、《周易》“三玄”的思辨...
+                    </p>
+                </article>
+
+                <hr class="border-porcelain-cobalt/10" />
+
+                <article onclick="openArticle('research-2')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        马尔库塞对弗洛伊德“升华”概念的重塑
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>4 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>批判理论</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        引言：在《爱欲与文明》中，马尔库塞重新审视了弗洛伊德的精神分析理论，试图探讨“非压抑性文明”的可能性。他将本能压抑区分为“基本压抑”与“额外压抑”...
+                    </p>
+                </article>
+
+                <hr class="border-porcelain-cobalt/10" />
+
+                <article onclick="openArticle('research-3')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        读《黄泉下的美术——宏观中国古代墓葬》引发的几点思考
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>5 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>美术史研究</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        《黄泉下的美术——宏观中国古代墓葬》是巫鸿先生的重要著作之一，它开辟了中国美术史上的一个新领域，即对墓葬艺术的空间与礼仪功能研究。巫鸿先生将西方的艺术史研究方法应用到中国古代空间表现...
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- MODULE 2: 传灯·育新 -->
+        <section id="module-teaching" class="content-module hidden space-y-6 max-w-4xl mx-auto bg-white/90 p-6 md:p-10 rounded-2xl border border-porcelain-cobalt/10 shadow-sm">
+            <div class="flex items-center justify-between border-b border-porcelain-cobalt/10 pb-4 mb-6">
+                <div>
+                    <span class="text-porcelain-cerulean font-serif font-semibold text-xs tracking-widest uppercase">Sharing & Dialogue</span>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-porcelain-cobalt mt-1">传灯·育新</h2>
+                </div>
+                <button onclick="switchTab('landscape')" class="text-xs font-serif text-porcelain-muted hover:text-porcelain-cobalt flex items-center gap-1.5 bg-porcelain-base px-3 py-1.5 rounded-lg border border-porcelain-cobalt/10 transition-colors">
+                    <i class="fa-solid fa-mountain"></i> 返回画卷
+                </button>
+            </div>
+
+            <div class="space-y-8">
+                <article onclick="openArticle('teaching-1')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        如何提出一个“好问题”？——探究式讨论课堂的启示
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>教学手记</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        在信息唾手可得的时代，精准提问的价值远高于记忆答案。整理了适合启发思维的提问清单，帮助建立自我质疑与深挖的习惯，引导学生打破框架...
+                    </p>
+                </article>
+
+                <hr class="border-porcelain-cobalt/10" />
+
+                <article onclick="openArticle('teaching-2')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        开放式研讨课的实验手记与互动反思
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>3 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>教育实践</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        尝试用“课题辩论+协同工作坊”取代单向灌输。记录了几次讨论中令人眼前一亮的小火花与反思改进点，探讨如何建立更平等的对话空间...
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- MODULE 3: 知行·践真 -->
+        <section id="module-practice" class="content-module hidden space-y-6 max-w-4xl mx-auto bg-white/90 p-6 md:p-10 rounded-2xl border border-porcelain-cobalt/10 shadow-sm">
+            <div class="flex items-center justify-between border-b border-porcelain-cobalt/10 pb-4 mb-6">
+                <div>
+                    <span class="text-porcelain-cerulean font-serif font-semibold text-xs tracking-widest uppercase">Hands-on Experiments</span>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-porcelain-cobalt mt-1">知行·践真</h2>
+                </div>
+                <button onclick="switchTab('landscape')" class="text-xs font-serif text-porcelain-muted hover:text-porcelain-cobalt flex items-center gap-1.5 bg-porcelain-base px-3 py-1.5 rounded-lg border border-porcelain-cobalt/10 transition-colors">
+                    <i class="fa-solid fa-mountain"></i> 返回画卷
+                </button>
+            </div>
+
+            <div class="space-y-8">
+                <article onclick="openArticle('practice-1')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        Personal Reading Workflow: 基于 Python 的 Markdown 笔记自动化整理工具
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>开源工具</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        一套个人自用的 Markdown 笔记自动化处理脚本，可将阅读摘录自动按主题分类并打上标签，保持数字书房的整洁...
+                    </p>
+                </article>
+
+                <hr class="border-porcelain-cobalt/10" />
+
+                <article onclick="openArticle('practice-2')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        数字古风卡片生成器：基于 Canvas 的排版实验
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>前端实验</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        基于 HTML Canvas 的前端小实验，可将一段文字实时渲染为青花瓷配色或水墨山水风格的排版卡片，便于日常分享与记录...
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- MODULE 4: 远瞻·智境 -->
+        <section id="module-ai-vision" class="content-module hidden space-y-6 max-w-4xl mx-auto bg-white/90 p-6 md:p-10 rounded-2xl border border-porcelain-cobalt/10 shadow-sm">
+            <div class="flex items-center justify-between border-b border-porcelain-cobalt/10 pb-4 mb-6">
+                <div>
+                    <span class="text-porcelain-cerulean font-serif font-semibold text-xs tracking-widest uppercase">Future Horizon & AI</span>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-porcelain-cobalt mt-1">远瞻·智境</h2>
+                </div>
+                <button onclick="switchTab('landscape')" class="text-xs font-serif text-porcelain-muted hover:text-porcelain-cobalt flex items-center gap-1.5 bg-porcelain-base px-3 py-1.5 rounded-lg border border-porcelain-cobalt/10 transition-colors">
+                    <i class="fa-solid fa-mountain"></i> 返回画卷
+                </button>
+            </div>
+
+            <div class="space-y-8">
+                <article onclick="openArticle('ai-1')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        “如水随形”的智能体外壳与人机交互形态的演变
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>3 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>AI 交互</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        未来的软件界面也许不再有固定的按钮与菜单，而是像水流一样，根据用户的即时意图动态生成最契合的交互媒介...
+                    </p>
+                </article>
+
+                <hr class="border-porcelain-cobalt/10" />
+
+                <article onclick="openArticle('ai-2')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        机器审美与人文留白：生成式算法年代的审视
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>3 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>美学思考</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        AI 可以瞬间生成繁复精致的图案，但“留白”的意境依然需要人类的审美裁判力。算法越充沛，留白越显珍贵...
+                    </p>
+                </article>
+
+                <hr class="border-porcelain-cobalt/10" />
+
+                <article onclick="openArticle('ai-3')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        长效学习与认知沉淀：深度阅读在智能时代的反思
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>认知习惯</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        在追求即时回答的时代，如何保持深度阅读与慢速思考的能力？AI 应当成为思考的助推器，而非大脑的替代品...
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- MODULE 5: 清欢·拾光 -->
+        <section id="module-life" class="content-module hidden space-y-6 max-w-4xl mx-auto bg-white/90 p-6 md:p-10 rounded-2xl border border-porcelain-cobalt/10 shadow-sm">
+            <div class="flex items-center justify-between border-b border-porcelain-cobalt/10 pb-4 mb-6">
+                <div>
+                    <span class="text-porcelain-cerulean font-serif font-semibold text-xs tracking-widest uppercase">Daily Journal</span>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-porcelain-cobalt mt-1">清欢·拾光</h2>
+                </div>
+                <button onclick="switchTab('landscape')" class="text-xs font-serif text-porcelain-muted hover:text-porcelain-cobalt flex items-center gap-1.5 bg-porcelain-base px-3 py-1.5 rounded-lg border border-porcelain-cobalt/10 transition-colors">
+                    <i class="fa-solid fa-mountain"></i> 返回画卷
+                </button>
+            </div>
+
+            <div class="space-y-8">
+                <article onclick="openArticle('life-1')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        重读《庄子·齐物论》随想与茶边小记
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>随笔札记</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        “天地与我并生，而万物与我为一。”在纷繁的信息洪流中，偶尔关掉屏幕静坐片刻，方觉内心澄澈...
+                    </p>
+                </article>
+
+                <hr class="border-porcelain-cobalt/10" />
+
+                <article onclick="openArticle('life-2')" class="group cursor-pointer p-4 -mx-4 rounded-xl hover:bg-porcelain-mist/50 transition-colors">
+                    <h3 class="text-xl md:text-2xl font-bold font-serif text-porcelain-cobalt group-hover:text-porcelain-cerulean transition-colors">
+                        秋分日：窗前听雨与整理书案
+                    </h3>
+                    <div class="flex items-center gap-3 text-xs text-porcelain-muted mt-2 font-sans">
+                        <span><i class="fa-regular fa-clock mr-1"></i>2 分钟阅读</span>
+                        <span>•</span>
+                        <span><i class="fa-regular fa-folder mr-1"></i>日常记录</span>
+                    </div>
+                    <p class="text-porcelain-ink/80 text-sm mt-3 leading-relaxed font-sans">
+                        趁着雨天将积攒了一季度的纸质笔记扫描入库。看着旧纸张上的字迹与新打上的电子标签，颇有种时光重叠的趣味...
+                    </p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive Article Detail Modal View -->
+    <div id="article-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-6 overflow-y-auto">
+        <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl border border-porcelain-cobalt/20 max-h-[90vh] flex flex-col overflow-hidden animate-fadeIn">
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-porcelain-cobalt/10 flex items-center justify-between bg-porcelain-mist/40">
+                <span id="modal-category" class="text-xs font-serif font-bold text-porcelain-cerulean uppercase tracking-widest">
+                    文章阅读
+                </span>
+                <button onclick="closeArticle()" class="w-8 h-8 rounded-full bg-white hover:bg-porcelain-cobalt hover:text-white flex items-center justify-center text-porcelain-muted transition-colors shadow-sm">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6 font-serif leading-relaxed text-porcelain-ink" id="modal-body">
+                <!-- Content inserted dynamically -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 border-t border-porcelain-cobalt/10 bg-porcelain-base/60 flex items-center justify-between text-xs font-sans text-porcelain-muted">
+                <span>观复斋 · 笔记沉淀</span>
+                <button onclick="closeArticle()" class="px-4 py-2 bg-porcelain-cobalt text-white rounded-lg hover:bg-porcelain-cerulean transition-colors font-serif">
+                    关闭阅读
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Article Details Data Repository
+        const articlesData = {
+            'research-1': {
+                category: '探源·研思',
+                title: '魏晋时期玄学与书法关系研究综述',
+                meta: '3 分钟阅读 • 艺术史与哲学',
+                content: `
+                    <h4 class="text-lg font-bold text-porcelain-cobalt mb-3">一、魏晋时期社会文化背景及魏晋玄学的兴起</h4>
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        魏晋时期政治局势动荡，汉代恪守的儒家经典权威面临解构，士大夫阶层转而投身于对《老子》、《庄子》、《周易》“三玄”的思辨。玄学推崇“贵无”、“自然”与“得意忘象”，为魏晋名士提供了精神避风港与哲学思考框架。
+                    </p>
+                    <h4 class="text-lg font-bold text-porcelain-cobalt mb-3">二、玄学思想对书法审美观的重构</h4>
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        汉代书法偏重结体严整与功用性，而魏晋书法在玄学“尚意”风尚驱动下，逐渐走向艺术自觉。王羲之、王献之父子将汉字书写升华为抒发“韵致”与“神采”的艺术形式。点画间的疏密与虚实，映照出庄子“虚室生白”的空灵意境。
+                    </p>
+                    <div class="p-4 rounded-xl bg-porcelain-mist/60 border border-porcelain-cobalt/10 my-4 text-xs italic text-porcelain-cerulean">
+                        “书之气必达，意必圆。玄学非虚无之学，实乃求天地本真之通途。”
+                    </div>
+                `
+            },
+            'research-2': {
+                category: '探源·研思',
+                title: '马尔库塞对弗洛伊德“升华”概念的重塑',
+                meta: '4 分钟阅读 • 批判理论',
+                content: `
+                    <h4 class="text-lg font-bold text-porcelain-cobalt mb-3">引言：非压抑性文明的构想</h4>
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        在《爱欲与文明》中，法兰克福学派哲学家马尔库塞重新审视了弗洛伊德的精神分析理论。弗洛伊德认为文明必须建立在对本能的压抑与升华之上，而马尔库塞提出了“额外压抑”（Surplus-repression）与“绩效原则”（Performance Principle），指出当代工业社会对人的本能造成了超乎生存必要的过度束缚。
+                    </p>
+                    <h4 class="text-lg font-bold text-porcelain-cobalt mb-3">“非压抑性升华”的可能性</h4>
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        马尔库塞提出了“非压抑性升华”的假说，认为爱欲（Eros）不仅是生殖性的，更能拓展为充盈于整个人类活动与审美体验中的创造性力量。审美维度成为通向自由与解放的核心桥梁。
+                    </p>
+                `
+            },
+            'research-3': {
+                category: '探源·研思',
+                title: '读《黄泉下的美术——宏观中国古代墓葬》引发的几点思考',
+                meta: '5 分钟阅读 • 美术史研究',
+                content: `
+                    <h4 class="text-lg font-bold text-porcelain-cobalt mb-3">空间与礼仪的微观与宏观视野</h4>
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        巫鸿先生的《黄泉下的美术》打破了将墓葬随葬品单件割裂研究的传统范式，将墓葬视为一个整体的“地下礼仪空间”。通过对石室、壁画、帛画及棺椁的微观分析，揭示出中国古代死者观、宇宙观以及生死跨越的礼仪象征。
+                    </p>
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        这种方法论给我们的启示在于：任何艺术形式的呈现都依赖于其所处的具体语境与空间逻辑，脱离了语境的解读往往会失却其灵魂。
+                    </p>
+                `
+            },
+            'teaching-1': {
+                category: '传灯·育新',
+                title: '如何提出一个“好问题”？——探究式讨论课堂的启示',
+                meta: '2 分钟阅读 • 教学手记',
+                content: `
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        在信息爆炸与人工智能工具普及的时代，精准提问的价值远高于记忆现成答案。好的问题往往具有开放性、启发性与反思性。
+                    </p>
+                    <h4 class="text-lg font-bold text-porcelain-cobalt mb-3">好问题的三个维度</h4>
+                    <ul class="list-disc list-inside text-sm space-y-2 text-porcelain-ink/90 mb-4">
+                        <li><strong>追问前提：</strong>“这一论断背后的默认假设是什么？”</li>
+                        <li><strong>寻找边界：</strong>“在什么极端条件下，这一规律会失效？”</li>
+                        <li><strong>联结他者：</strong>“这与我们之前讨论的另一概念有何内在关联？”</li>
+                    </ul>
+                `
+            },
+            'teaching-2': {
+                category: '传灯·育新',
+                title: '开放式研讨课的实验手记与互动反思',
+                meta: '3 分钟阅读 • 教育实践',
+                content: `
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        尝试用“课题辩论+协同工作坊”取代传统的单向灌输式教学。在最近的课程实践中，学生围绕前沿议题展开小组研讨与观点碰撞。
+                    </p>
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        反思改进点：应当为性格内向的同学提供更多多样化的表达渠道（如异步匿名发言板），确保每个人都能在舒适的节奏中贡献真知灼见。
+                    </p>
+                `
+            },
+            'practice-1': {
+                category: '知行·践真',
+                title: 'Personal Reading Workflow: 基于 Python 的 Markdown 笔记自动化整理工具',
+                meta: '2 分钟阅读 • 开源工具',
+                content: `
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        一套个人自用的 Python 自动化脚本，用于解析 Obsidian 与 RSS 读书摘录。通过正则抽取高亮段落与标签，并按主题自动分类归档至对应数字书房目录下。
+                    </p>
+                    <pre class="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs overflow-x-auto font-mono mb-4"><code># 示例：笔记标签提取与 frontmatter 格式化
+import re, yaml
+
+def process_notes(content):
+    tags = re.findall(r'#([\w-]+)', content)
+    return {"tags": list(set(tags)), "processed": True}
+</code></pre>
+                `
+            },
+            'practice-2': {
+                category: '知行·践真',
+                title: '数字古风卡片生成器：基于 Canvas 的排版实验',
+                meta: '2 分钟阅读 • 前端实验',
+                content: `
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        基于 HTML Canvas 的前端小工具，能将一段文字实时绘制为具有青花瓷色彩或水墨质感的分享卡片。支持自定义印章文本、宣纸纹理底色与古典排版样式。
+                    </p>
+                `
+            },
+            'ai-1': {
+                category: '远瞻·智境',
+                title: '“如水随形”的智能体外壳与人机交互形态的演变',
+                meta: '3 分钟阅读 • AI 交互',
+                content: `
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        未来的软件界面也许不再依赖固定的菜单与层级按钮，而是像水流一样，根据用户的即时意图与上下文，动态生成最契合的交互媒介与信息展示形态。
+                    </p>
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        智能体（Agent）作为中间层，抹平了传统应用程序之间的壁垒，使用户能够专注于思考与表达本身。
+                    </p>
+                `
+            },
+            'ai-2': {
+                category: '远瞻·智境',
+                title: '机器审美与人文留白：生成式算法年代的审视',
+                meta: '3 分钟阅读 • 美学思考',
+                content: `
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        AI 生成图像可以瞬间填满极尽繁复的细节，但在中国古典美学中，“留白”方是气韵生动的关键所在。算法越是充沛富足，人类对“留白”与“意到笔不到”的审美裁量权就越显珍贵。
+                    </p>
+                `
+            },
+            'ai-3': {
+                category: '远瞻·智境',
+                title: '长效学习与认知沉淀：深度阅读在智能时代的反思',
+                meta: '2 分钟阅读 • 认知习惯',
+                content: `
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        在生成式 AI 能够秒级总结数万字长文的时代，人类为何还需要亲自进行深度慢速阅读？因为真正的认知消化与灵感火花，往往诞生于啃读长文过程中的停顿与联想，而非直接获得摘要结论。
+                    </p>
+                `
+            },
+            'life-1': {
+                category: '清欢·拾光',
+                title: '重读《庄子·齐物论》随想与茶边小记',
+                meta: '2 分钟阅读 • 随笔札记',
+                content: `
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        “天地与我并生，而万物与我为一。”雨后清晨，泡上一壶清茶，重读《齐物论》。在纷繁嘈杂的信息流中，关掉屏幕静坐片刻，体会万物同达的澄澈，内心的焦虑豁然开朗。
+                    </p>
+                `
+            },
+            'life-2': {
+                category: '清欢·拾光',
+                title: '秋分日：窗前听雨与整理书案',
+                meta: '2 分钟阅读 • 日常记录',
+                content: `
+                    <p class="mb-4 text-sm leading-relaxed text-porcelain-ink/90">
+                        秋分日，凉风渐起。把积攒了一季度的纸质笔记与散落书签归类整理。看着旧纸张上的字迹与新打上的数字标签，颇有种时光重叠与思绪交融的趣味。
+                    </p>
+                `
+            }
+        };
+
+        // Tab Navigation Logic
+        function switchTab(tabId) {
+            // Hide all modules
+            const modules = document.querySelectorAll('.content-module');
+            modules.forEach(mod => {
+                mod.classList.add('hidden');
+                mod.classList.remove('fade-in-content');
+            });
+
+            // Remove active styles from nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => btn.classList.remove('nav-item-active'));
+
+            // Show selected module
+            const targetModule = document.getElementById('module-' + tabId);
+            if (targetModule) {
+                targetModule.classList.remove('hidden');
+                targetModule.classList.add('fade-in-content');
+            }
+
+            // Highlight active nav item
+            const activeNav = document.getElementById('nav-' + tabId);
+            if (activeNav) {
+                activeNav.classList.add('nav-item-active');
+            }
+
+            // Close mobile menu if open
+            closeMobileSidebar();
+
+            // Scroll main container to top
+            document.querySelector('main').scrollTop = 0;
+        }
+
+        // Article Modal Operations
+        function openArticle(articleId) {
+            const data = articlesData[articleId];
+            if (!data) return;
+
+            document.getElementById('modal-category').innerText = data.category;
+            document.getElementById('modal-body').innerHTML = `
+                <div class="border-b border-porcelain-cobalt/10 pb-4 mb-4">
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-porcelain-cobalt">${data.title}</h3>
+                    <div class="text-xs text-porcelain-muted mt-2 font-sans flex items-center gap-2">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>${data.meta}</span>
+                    </div>
+                </div>
+                <div>${data.content}</div>
+            `;
+
+            document.getElementById('article-modal').classList.remove('hidden');
+        }
+
+        function closeArticle() {
+            document.getElementById('article-modal').classList.add('hidden');
+        }
+
+        // Mobile Sidebar Toggle
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-backdrop');
+
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                backdrop.classList.add('hidden');
+            }
+        }
+
+        function closeMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-backdrop');
+            sidebar.classList.add('-translate-x-full');
+            backdrop.classList.add('hidden');
+        }
+
+        // Web Audio API Synthesizer BGM System
+        let audioCtx = null;
+        let isPlaying = false;
+        let synthInterval = null;
+        let currentTrack = 'zen-chime';
+
+        // Pentatonic Scale frequencies (Hz) for authentic classical Chinese melody feel
+        const scales = {
+            'zen-chime': [261.63, 293.66, 329.63, 392.00, 440.00, 523.25], // Gong, Shang, Jiao, Zhi, Yu
+            'mountain-stream': [196.00, 220.00, 261.63, 293.66, 329.63, 392.00],
+            'bamboo-wind': [329.63, 392.00, 440.00, 523.25, 587.33, 659.25]
+        };
+
+        function initAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playSynthesizedNote(freq, type = 'sine', duration = 2.5) {
+            if (!audioCtx || !isPlaying) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+                // Gentle Attack & Long Soft Decay for Zen chime vibe
+                gain.gain.setValueAtTime(0, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.2);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {
+                console.log(e);
+            }
+        }
+
+        function startSynthBGM() {
+            if (synthInterval) clearInterval(synthInterval);
+            const notes = scales[currentTrack] || scales['zen-chime'];
+
+            synthInterval = setInterval(() => {
+                if (!isPlaying) return;
+                const note = notes[Math.floor(Math.random() * notes.length)];
+                const waveType = currentTrack === 'bamboo-wind' ? 'triangle' : 'sine';
+                playSynthesizedNote(note, waveType, 3.0);
+            }, 1800);
+        }
+
+        function stopSynthBGM() {
+            if (synthInterval) {
+                clearInterval(synthInterval);
+                synthInterval = null;
+            }
+        }
+
+        function toggleBGM() {
+            const playBtnIcon = document.getElementById('bgm-icon');
+            const playBtnMobileIcon = document.getElementById('bgm-icon-mobile');
+            const badge = document.getElementById('bgm-status-badge');
+            const nativeAudio = document.getElementById('audio-player');
+
+            if (isPlaying) {
+                // Pause
+                isPlaying = false;
+                if (playBtnIcon) playBtnIcon.className = 'fa-solid fa-play text-xs';
+                if (playBtnMobileIcon) playBtnMobileIcon.className = 'fa-solid fa-play text-xs';
+                badge.classList.add('hidden');
+
+                if (currentTrack === 'custom') {
+                    nativeAudio.pause();
+                } else {
+                    stopSynthBGM();
+                }
+            } else {
+                // Play
+                isPlaying = true;
+                if (playBtnIcon) playBtnIcon.className = 'fa-solid fa-pause text-xs';
+                if (playBtnMobileIcon) playBtnMobileIcon.className = 'fa-solid fa-pause text-xs';
+                badge.classList.remove('hidden');
+
+                if (currentTrack === 'custom') {
+                    if (nativeAudio.src) {
+                        nativeAudio.play();
+                    } else {
+                        console.log('请先选择本地音频文件');
+                        isPlaying = false;
+                        if (playBtnIcon) playBtnIcon.className = 'fa-solid fa-play text-xs';
+                        if (playBtnMobileIcon) playBtnMobileIcon.className = 'fa-solid fa-play text-xs';
+                        badge.classList.add('hidden');
+                    }
+                } else {
+                    initAudioContext();
+                    startSynthBGM();
+                }
+            }
+        }
+
+        function changeBGMTrack(val) {
+            currentTrack = val;
+            const fileContainer = document.getElementById('custom-file-container');
+            const nativeAudio = document.getElementById('audio-player');
+
+            if (val === 'custom') {
+                stopSynthBGM();
+                fileContainer.classList.remove('hidden');
+                if (isPlaying) {
+                    if (nativeAudio.src) {
+                        nativeAudio.play();
+                    } else {
+                        toggleBGM(); // Pause
+                    }
+                }
+            } else {
+                fileContainer.classList.add('hidden');
+                nativeAudio.pause();
+                if (isPlaying) {
+                    initAudioContext();
+                    startSynthBGM();
+                }
+            }
+        }
+
+        function handleCustomAudio(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const nativeAudio = document.getElementById('audio-player');
+                nativeAudio.src = URL.createObjectURL(file);
+                if (isPlaying) {
+                    nativeAudio.play();
+                }
+            }
+        }
+
+        // Close modal on Escape key press
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeArticle();
+            }
+        });
+
+        // Initialize default view on load
+        window.onload = function() {
+            switchTab('landscape');
+        };
+    </script>
+</body>
+</html>
